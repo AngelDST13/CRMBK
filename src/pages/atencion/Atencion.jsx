@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useCRM } from '../../store/CRMContext'
 import { diasSinAvance } from '../../domain/metricas'
+import { AYUDA_ATENCION } from '../../domain/ayudas'
 import { EncabezadoPagina, Tarjeta, Vacio, Kpi } from '../../components/ui/Basicos'
 import { BarraFiltros } from '../../components/ui/BarraFiltros'
 import { TarjetaCandidato } from '../../components/candidatos/TarjetaCandidato'
@@ -73,7 +74,11 @@ export function Atencion({ vista }) {
 
   return (
     <>
-      <EncabezadoPagina titulo={config.titulo} descripcion={config.descripcion} />
+      <EncabezadoPagina
+        titulo={config.titulo}
+        descripcion={config.descripcion}
+        ayuda={{ pasos: AYUDA_ATENCION[vista] }}
+      />
 
       <section className="rejilla" aria-label="Resumen de la vista">
         <Kpi etiqueta="En esta vista" valor={lista.length} detalle={config.titulo} />

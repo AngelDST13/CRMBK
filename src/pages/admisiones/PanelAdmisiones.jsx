@@ -10,6 +10,7 @@ import { TarjetaCandidato } from '../../components/candidatos/TarjetaCandidato'
 import { FichaCandidato } from '../../components/candidatos/FichaCandidato'
 import { useCargaAlDesplazar } from '../../hooks/useScroll'
 import { DIAS_SIN_AVANCE_ALERTA } from '../../domain/etapas'
+import { AYUDA_PANEL } from '../../domain/ayudas'
 
 const FILTROS_INICIALES = { sede: 'todas', cohorte: 'todas', desde: '' }
 const SECCIONES = [
@@ -37,6 +38,7 @@ export function PanelAdmisiones() {
       <EncabezadoPagina
         titulo="Panel de admisiones"
         descripcion="El embudo en vivo: etapas con meta, días promedio y fuga. Cifras ficticias de la demo."
+        ayuda={AYUDA_PANEL}
       />
 
       <BarraFiltros filtros={filtros} onCambiar={setFiltros} />

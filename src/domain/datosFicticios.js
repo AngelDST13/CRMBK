@@ -41,13 +41,17 @@ export function generarProspectos() {
 
   etapaFinal.forEach((indiceFinal, n) => {
     const numero = n + 1
-    const historial = []
-    let fecha = sumarDias(hoy, -(60 - Math.floor(azar() * 25)))
-    for (let i = 0; i <= indiceFinal; i++) {
-      // Ninguna fecha del historial puede quedar en el futuro.
-      historial.push({ etapa: ETAPAS[i].id, fecha: fecha > hoy ? hoy : fecha })
-      fecha = sumarDias(fecha, 1 + Math.floor(azar() * 9))
+    // El último avance cae en los últimos días; las fechas anteriores se calculan hacia atrás.
+    // Así el historial nunca queda en el futuro y la antigüedad refleja la etapa real.
+    const pasos = indiceFinal + 1
+    const saltos = Array.from({ length: pasos }, (_, i) => (i === 0 ? 0 : 1 + Math.floor(azar() * 9)))
+    const fechas = new Array(pasos)
+    let fecha = sumarDias(hoy, -Math.floor(azar() * 4))
+    for (let i = pasos - 1; i >= 0; i--) {
+      fechas[i] = fecha
+      fecha = sumarDias(fecha, -saltos[i])
     }
+    const historial = fechas.map((f, i) => ({ etapa: ETAPAS[i].id, fecha: f }))
     const fechaIngreso = historial[0].fecha
 
     const reciente = fechaIngreso >= sumarDias(hoy, -7)

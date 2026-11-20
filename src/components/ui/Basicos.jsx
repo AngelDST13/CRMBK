@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Icono } from './iconos'
+import { Guia } from './Guia'
 
 // Revela su contenido con una transición la primera vez que entra en la pantalla (IntersectionObserver).
 export function Revelar({ children, className = '', ...resto }) {
@@ -32,15 +33,18 @@ export function Revelar({ children, className = '', ...resto }) {
   )
 }
 
-export function EncabezadoPagina({ titulo, descripcion, acciones }) {
+export function EncabezadoPagina({ titulo, descripcion, acciones, ayuda }) {
   return (
-    <header className="encabezado-pagina">
-      <div>
-        <h1>{titulo}</h1>
-        {descripcion && <p>{descripcion}</p>}
-      </div>
-      {acciones && <div className="acciones">{acciones}</div>}
-    </header>
+    <>
+      <header className="encabezado-pagina">
+        <div>
+          <h1>{titulo}</h1>
+          {descripcion && <p>{descripcion}</p>}
+        </div>
+        {acciones && <div className="acciones">{acciones}</div>}
+      </header>
+      {ayuda && <Guia pasos={ayuda.pasos} glosario={ayuda.glosario} nota={ayuda.nota} />}
+    </>
   )
 }
 

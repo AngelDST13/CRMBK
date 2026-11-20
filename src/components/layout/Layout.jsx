@@ -38,8 +38,8 @@ export function Layout() {
           <Icono nombre="X" size={20} />
         </button>
         <div className="menu__marca">
-          <span className="menu__logo" aria-hidden="true">F</span>
-          <span>CRM FWD</span>
+          <span className="menu__logo" aria-hidden="true">FWD</span>
+          <span>CRM Admisiones</span>
         </div>
         <nav>
           {MENU.map((grupo) => (

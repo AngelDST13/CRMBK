@@ -8,6 +8,7 @@ import { Icono } from '../../components/ui/iconos'
 import { TarjetaCandidato } from '../../components/candidatos/TarjetaCandidato'
 import { FichaCandidato } from '../../components/candidatos/FichaCandidato'
 import { useCargaAlDesplazar } from '../../hooks/useScroll'
+import { AYUDA_FICHAS } from '../../domain/ayudas'
 
 const FILTROS_INICIALES = { sede: 'todas', cohorte: 'todas', desde: '' }
 const PASO = 24
@@ -38,6 +39,7 @@ export function Fichas() {
       <EncabezadoPagina
         titulo="Fichas de candidatos"
         descripcion="Una ficha por candidato, con su etapa e historial. Solo se muestra el código."
+        ayuda={AYUDA_FICHAS}
       />
 
       <BarraFiltros

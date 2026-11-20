@@ -7,6 +7,7 @@ import { EncabezadoPagina, Kpi, Boton, Campo, Insignia } from '../../components/
 import { BarraFiltros } from '../../components/ui/BarraFiltros'
 import { DialogoMover } from '../../components/candidatos/DialogoMover'
 import { Icono } from '../../components/ui/iconos'
+import { AYUDA_KANBAN } from '../../domain/ayudas'
 
 const FILTROS_INICIALES = { sede: 'todas', cohorte: 'todas', desde: '' }
 const FORMULARIO_INICIAL = { sede: SEDES[0], canal: CANALES[0], cohorte: COHORTES[0] }
@@ -60,6 +61,7 @@ export function CRMKanban() {
       <EncabezadoPagina
         titulo="CRM (kanban)"
         descripcion="Cada candidato en su etapa. Arrastra una tarjeta o usa «Mover a…» para cambiar de etapa: antes te muestra qué va a pasar."
+        ayuda={AYUDA_KANBAN}
         acciones={
           <Boton variante="morado" icono="Plus" onClick={() => setFormularioAbierto((v) => !v)}>
             Entraron por día
